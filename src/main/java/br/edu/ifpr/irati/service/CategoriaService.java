@@ -17,4 +17,8 @@ public class CategoriaService {
         return categoriaDAO.buscarTodos();
     }
 
+    public void salvar(Categoria categoria){
+        categoriaDAO.salvar(categoria);
+    }
+
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_6_1.xsd"
+         version="4.0">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+
+    <servlet>
+        <servlet-name>ContatoServlet</servlet-name>
+        <servlet-class>br.edu.ifpr.irati.servlet.ContatoServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ContatoPageServlet</servlet-name>
+        <servlet-class>br.edu.ifpr.irati.servlet.ContatoPageServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CategoriaServlet</servlet-name>
+        <servlet-class>br.edu.ifpr.irati.servlet.CategoriaServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ContatoServlet</servlet-name>
+        <url-pattern>/contato</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ContatoPageServlet</servlet-name>
+        <url-pattern>/contatopage</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CategoriaServlet</servlet-name>
+        <url-pattern>/categoria</url-pattern>
+    </servlet-mapping>
+
+</web-app>
