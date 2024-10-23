@@ -1,6 +1,7 @@
 package br.edu.ifpr.irati.dao;
 
 import br.edu.ifpr.irati.model.Categoria;
+import br.edu.ifpr.irati.model.Contato;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -59,4 +60,32 @@ public class CategoriaDAO {
         return categorias;
     }
 
+    public Categoria buscarPorId(int id){
+        Conexao conexao = new Conexao();
+        Connection con = conexao.conectar();
+        Categoria categoria = null;
+        String sql = "SELECT id, titulo, descricao, emails, prazominimo, prazomaximo, nomeresponsavel " +
+                "FROM categorias WHERE id = ?;";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                int idCat = rs.getInt(1);
+                String tituloCat = rs.getString(2);
+                String descricaoCat = rs.getString(3);
+                String emailsCat = rs.getString(4);
+                int prazoMinimoCat = rs.getInt(5);
+                int prazoMaximoCat = rs.getInt(6);
+                String nomeResponsavelCat = rs.getString(7);
+                categoria = new Categoria(idCat,tituloCat,descricaoCat,emailsCat,prazoMinimoCat,prazoMaximoCat,nomeResponsavelCat);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return categoria;
+    }
 }

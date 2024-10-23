@@ -21,4 +21,5 @@ public class CategoriaService {
         categoriaDAO.salvar(categoria);
     }
 
+    public Categoria buscarPorId(int id) { return categoriaDAO.buscarPorId(id); }
 }

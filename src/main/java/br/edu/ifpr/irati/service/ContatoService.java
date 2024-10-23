@@ -4,6 +4,8 @@ import br.edu.ifpr.irati.dao.ContatoDAO;
 import br.edu.ifpr.irati.exception.ContatoException;
 import br.edu.ifpr.irati.model.Contato;
 
+import java.util.List;
+
 public class ContatoService {
 
     private ContatoDAO contatoDAO;
@@ -38,4 +40,5 @@ public class ContatoService {
 
     }
 
+    public List<Contato> buscarTodos() { return contatoDAO.buscarTodos(); }
 }
