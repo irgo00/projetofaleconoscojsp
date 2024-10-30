@@ -40,25 +40,45 @@ try{
         <div class="col s12">
             <!--<div class="col s3"></div>-->
             <div class="col s6 offset-s3">
-                <form class="col s12" action="contato" method="post">
+                <form class="col s12"
+                      <%if(id != 0){%>
+                      action="resposta"
+                      <%}else{%>
+                        action="contato"
+                      <%}%>
+                      method="post">
+                    <input type="hidden" name="id" value="${param.id}">
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person</i>
-                            <input id="nome" name="nome" type="text" class="validate" value="<%=contato.getNome()%>">
+                            <input id="nome" name="nome" type="text" class="validate" value="<%=contato.getNome()%>"
+                            <%if(id != 0){%>
+                                    disabled
+                                <%
+                                }
+                                %>>
                             <label for="nome">Nome</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="email" name="email" type="email" class="validate" value="<%=contato.getEmail()%>">
+                            <input id="email" name="email" type="email" class="validate" value="<%=contato.getEmail()%>"
+                                <%if(id != 0){%>
+                                   disabled
+                                <%
+                                }
+                                %>>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">subject</i>
-                            <select id="assunto" name="assunto">
+                            <select id="assunto" name="assunto"
+                            <%if(id != 0){%>
+                                disabled
+                            <%}%>>
                                 <option value="" disabled selected>Escolha a categoria</option>
                                 <%
                                 for (Categoria c: categorias){
@@ -70,7 +90,7 @@ try{
                                     <option value=<%=c.getId()%> <%=selecionado%>> <%=c.getTitulo()%> </option>
                                 <%
                                 }
-                                %>
+                                %>>
                             </select>
                             <label>Materialize Select</label>
                         </div>
@@ -78,12 +98,34 @@ try{
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">mode_edit</i>
-                            <textarea id="texto" name="texto" class="materialize-textarea"><%=contato.getTexto()%></textarea>
+                            <textarea id="texto" name="texto" class="materialize-textarea"
+                                    <%if(id != 0){%>
+                                      disabled
+                                    <%
+                                        }
+                                    %>><%=contato.getTexto()%></textarea>
                             <label for="texto">Texto</label>
                         </div>
                     </div>
+
+                    <%if(id != 0){%>
                     <div class="row">
-                        <button class="btn waves-effect waves-light col s12" type="submit" name="enviar">Enviar Mensagem
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea id="resposta" name="resposta" class="materialize-textarea"></textarea>
+                            <label for="resposta">Responder: </label>
+                        </div>
+                    </div>
+                    <%
+                    }
+                    %>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light col s12" type="submit" name="enviar">
+                            <%if(id != 0){%>
+                                Responder
+                            <%}else{%>
+                                Enviar Mensagem
+                            <%}%>
                         </button>
                     </div>
                 </form>

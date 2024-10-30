@@ -64,7 +64,7 @@ public class ContatoDAO {
     public Contato buscarPorId(int id){
         Conexao conexao = new Conexao();
         Connection con = conexao.conectar();
-        Contato contato = new Contato();
+        Contato contato = null;
         String sql = "select con.nome, con.email, " +
                      "con.texto, cat.id, cat.titulo, " +
                      "cat.descricao, cat.emails, " +

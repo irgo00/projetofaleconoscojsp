@@ -36,18 +36,17 @@
     </thead>
 
     <tbody>
-    <!--tr = linha, td = coluna-->
 
     <%
     for(Contato c: contatos){
     %>
         <tr>
-            <td><%out.print(c.getNome());%></td>
-            <td><%out.print(c.getEmail());%></td>
-            <td><%out.print(c.getAssunto().getTitulo());%></td>
-            <td><%out.print(c.getTexto());%></td>
+            <td><%= (c.getNome())%></td>
+            <td><%= (c.getEmail())%></td>
+            <td><%= (c.getAssunto().getTitulo())%></td>
+            <td><%= (c.getTexto())%></td>
             <td>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Responder
+                <button class="btn waves-effect waves-light" type="submit" name="action"><a href="contato.jsp?id=<%=c.getId()%>" style="color: white">Responder</a>
                     <i class="material-icons right">send</i>
                 </button>
             </td>
